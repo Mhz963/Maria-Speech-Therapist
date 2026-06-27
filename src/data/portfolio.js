@@ -108,11 +108,12 @@ export const experience = [
 export const certifications = [
   {
     title: "Improving Teacher's Skills in Sign Language",
-    issuer: 'J.S.E.T (H.I) ù Government Training',
+    issuer: 'J.S.E.T (H.I) ó Government Training',
     date: 'Jun 2026',
     certNo: '04020106',
     type: 'pdf',
     file: '/certificates/Government training.pdf',
+    image: '/images/certificates/government-training.jpeg',
     featured: true,
   },
   {
@@ -121,6 +122,7 @@ export const certifications = [
     date: 'Jun 2020',
     type: 'pdf',
     file: '/certificates/VirtualTraining_MariaaAnayat.pdf',
+    image: '/images/certificates/virtual-sign-language-training.jpeg',
     featured: true,
   },
   {
@@ -203,8 +205,8 @@ export const gallery = [
   { src: '/images/professional/1.jpeg', alt: 'Maria at University of the Punjab', caption: 'Institute of Special Education ù University of the Punjab' },
   { src: '/images/professional/2.jpeg', alt: 'ICORE 2022 Conference', caption: 'ICORE 2022 ù International Conference on Research' },
   { src: '/images/professional/3.jpeg', alt: 'Conference Presentation', caption: 'Presenting Research at ICORE 2022' },
-  { src: '/images/gallery/award-of-appreciation.jpeg', alt: 'Award of Appreciation', caption: 'Award of Appreciation ó Govt. Secondary School of Special Education for HI Girls, Gujrat' },
-  { src: '/images/gallery/ceremony.jpeg', alt: 'Training Course Closing Ceremony', caption: 'Closing Ceremony ó In-Service Training Course for Teachers of Disabled Children, Lahore' },
+  { src: '/images/gallery/award-of-appreciation.jpeg', alt: 'Award of Appreciation', caption: 'Award of Appreciation ù Govt. Secondary School of Special Education for HI Girls, Gujrat' },
+  { src: '/images/gallery/ceremony.jpeg', alt: 'Training Course Closing Ceremony', caption: 'Closing Ceremony ù In-Service Training Course for Teachers of Disabled Children, Lahore' },
 ];
 
 export const navLinks = [

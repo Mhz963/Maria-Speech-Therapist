@@ -61,7 +61,7 @@ export default function Education() {
                 decoding="async"
               />
               <div className="education__certificate-overlay">
-                <span>Degree Certificate</span>
+                <span>{education[activeIndex].degree}</span>
               </div>
             </div>
           </motion.div>
