@@ -49,12 +49,17 @@ export default function Education() {
           <motion.div
             className="education__detail"
             key={activeIndex}
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
           >
             <div className="education__certificate">
-              <img src={education[activeIndex].image} alt={education[activeIndex].degree} />
+              <img
+                src={education[activeIndex].image}
+                alt={education[activeIndex].degree}
+                loading="lazy"
+                decoding="async"
+              />
               <div className="education__certificate-overlay">
                 <span>Degree Certificate</span>
               </div>

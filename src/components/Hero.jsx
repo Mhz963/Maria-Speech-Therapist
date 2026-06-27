@@ -18,8 +18,8 @@ export default function Hero() {
       <div className="hero__content container">
         <motion.div
           className="hero__text"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <motion.div
@@ -95,7 +95,15 @@ export default function Hero() {
         >
           <div className="hero__image-glow" />
           <div className="hero__image-frame">
-            <img src="/images/personal/profile.jpeg?v=2" alt="Maria Anayat" className="hero__image" />
+            <img
+              src="/images/personal/profile.jpeg?v=2"
+              alt="Maria Anayat"
+              className="hero__image"
+              width={520}
+              height={650}
+              fetchPriority="high"
+              decoding="async"
+            />
           </div>
         </motion.div>
       </div>

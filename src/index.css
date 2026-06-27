@@ -30,6 +30,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-height);
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -38,7 +40,13 @@ body {
   color: var(--text-primary);
   line-height: 1.7;
   overflow-x: hidden;
+  max-width: 100%;
   -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 img { max-width: 100%; display: block; }
@@ -47,8 +55,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 ul { list-style: none; }
 
 .container {
-  width: min(1200px, 92vw);
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 24px);
 }
 
 .text-gradient {
@@ -83,6 +93,7 @@ ul { list-style: none; }
   font-size: clamp(2.2rem, 5vw, 3.2rem);
   font-weight: 700;
   line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .section-subtitle {
@@ -941,6 +952,49 @@ ul { list-style: none; }
   color: inherit;
   text-align: inherit;
   overflow: hidden;
+}
+
+.cert-pdf__preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  overflow: hidden;
+}
+
+.cert-pdf__canvas {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cert-pdf__canvas--ready {
+  opacity: 1;
+}
+
+.cert-pdf__loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background: #fff;
+  z-index: 1;
+}
+
+.cert-pdf__loading--error {
+  color: var(--text-secondary);
 }
 
 .cert-pdf__iframe {
@@ -1814,6 +1868,8 @@ ul { list-style: none; }
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
   position: relative;
+  width: 100%;
+  min-width: 0;
 }
 
 .gallery__item {
@@ -2084,7 +2140,8 @@ ul { list-style: none; }
   .hero {
     height: auto;
     max-height: none;
-    min-height: 100vh;
+    min-height: auto;
+    overflow: hidden;
   }
 
   .hero__content {
@@ -2094,30 +2151,44 @@ ul { list-style: none; }
     height: auto;
     max-height: none;
     padding: 24px 0 40px;
+    min-width: 0;
   }
 
-  .hero__text { align-self: start; order: 1; padding-left: 0; }
-  .hero__tagline { margin: 0 auto 32px; }
+  .hero__text { align-self: start; order: 1; padding-left: 0; min-width: 0; }
+  .hero__tagline { margin: 0 auto 32px; max-width: 100%; }
   .hero__actions { justify-content: center; }
   .hero__stats { justify-content: center; }
   .hero__image-wrapper {
     order: 2;
     max-height: 420px;
+    width: 100%;
+    min-width: 0;
   }
 
   .hero__image-frame,
   .hero__image {
     height: 420px;
     max-height: 420px;
+    width: 100%;
   }
 
-  .about__grid { grid-template-columns: 1fr; }
-  .about__image-stack { max-width: 400px; margin: 0 auto; }
+  .about__grid { grid-template-columns: 1fr; min-width: 0; }
+  .about__image-stack { max-width: 400px; margin: 0 auto; width: 100%; }
 
-  .education__layout { grid-template-columns: 1fr; }
+  .education__layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    min-width: 0;
+  }
+
+  .certifications__layout .certifications__detail {
+    order: -1;
+  }
 
   .education__timeline {
     height: auto;
+    max-height: none;
+    overflow-y: visible;
   }
 
   .education__timeline > div {
@@ -2130,21 +2201,29 @@ ul { list-style: none; }
     align-items: flex-start;
   }
 
+  .education__item h3 {
+    font-size: 1rem;
+    overflow-wrap: anywhere;
+  }
+
   .education__detail {
     height: auto;
+    min-width: 0;
   }
 
   .education__certificate,
   .education__detail-card {
     height: auto;
-    min-height: 320px;
+    min-height: 280px;
     max-height: none;
   }
 
   .education__certificate img {
     height: auto;
-    object-fit: cover;
+    max-height: 420px;
+    object-fit: contain;
   }
+
   .skills__grid { grid-template-columns: 1fr; }
   .certifications__grid { grid-template-columns: repeat(2, 1fr); }
 
@@ -2161,7 +2240,7 @@ ul { list-style: none; }
   }
 
   .gallery__item {
-    height: 260px;
+    height: 240px;
   }
 
   .contact__grid { grid-template-columns: 1fr; }
@@ -2170,16 +2249,41 @@ ul { list-style: none; }
 @media (max-width: 768px) {
   .section { padding: 16px 0; }
 
+  .hero__rings { display: none; }
+
   .navbar__links { display: none; }
   .navbar__toggle { display: flex; }
   .navbar__mobile { display: block; }
 
   .navbar__logo-text {
-    font-size: 1.1rem;
-    max-width: calc(100vw - 130px);
+    font-size: 1.05rem;
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .navbar__inner {
+    min-width: 0;
+    gap: 12px;
+  }
+
+  .navbar__logo {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .hero__name {
+    font-size: clamp(2.4rem, 10vw, 3.2rem);
+  }
+
+  .hero__tagline {
+    font-size: 0.95rem;
+  }
+
+  .hero__actions {
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   .hero__stats { gap: 20px; flex-wrap: wrap; }
@@ -2191,13 +2295,25 @@ ul { list-style: none; }
   .research__honors { grid-template-columns: 1fr; }
   .honor-card { flex-direction: column; }
   .honor-card__image { width: 100%; height: 160px; }
-  .conf-card { flex-direction: column; text-align: center; }
-  .conf-card__thumb { margin: 0 auto; }
+  .conf-card { flex-direction: column; text-align: left; }
+  .conf-card__thumb { margin: 0; }
   .contact__cards { grid-template-columns: 1fr; }
   .gallery__grid { grid-template-columns: 1fr; }
-  .gallery__item { height: 320px; }
+  .gallery__item { height: 280px; }
+
+  .education__certificate,
+  .education__detail-card {
+    min-height: 240px;
+  }
+
+  .cert-pdf__preview {
+    min-height: 240px;
+  }
 }
 
 @media (max-width: 480px) {
-  .hero__actions { flex-direction: column; align-items: center; }
+  .hero__actions { flex-direction: column; align-items: stretch; width: 100%; }
+  .hero__actions .btn { justify-content: center; width: 100%; }
+  .contact__cta-actions { flex-direction: column; }
+  .contact__cta-actions .btn { justify-content: center; width: 100%; }
 }

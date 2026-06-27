@@ -25,7 +25,7 @@ export default function About() {
           >
             <div className="about__image-stack">
               <div className="about__image-main">
-                <img src="/images/professional/1.jpeg" alt="Maria Anayat" />
+                <img src="/images/professional/1.jpeg" alt="Maria Anayat" loading="lazy" decoding="async" />
               </div>
               <div className="about__experience-badge">
                 <span className="about__exp-number">4+</span>
