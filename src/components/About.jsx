@@ -1,14 +1,18 @@
 import { motion } from 'framer-motion';
-import { aboutText, personalInfo } from '../data/portfolio';
-import { slideLeft, slideRight, StaggerContainer, StaggerItem } from '../hooks/useAnimations';
-import { HiOutlineLocationMarker, HiOutlineMail, HiOutlinePhone } from 'react-icons/hi';
-import { FaUniversity } from 'react-icons/fa';
+import { aboutText } from '../data/portfolio';
+import { slideLeft, slideRight } from '../hooks/useAnimations';
 
 export default function About() {
   return (
     <section id="about" className="section about">
       <div className="container">
-        <motion.div className="section-header" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideLeft}>
+        <motion.div
+          className="section-header about__header"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={slideLeft}
+        >
           <span className="section-label">About Me</span>
           <h2 className="section-title">
             Passionate Educator & <span className="text-gradient">Researcher</span>
@@ -42,25 +46,6 @@ export default function About() {
             variants={slideRight}
           >
             <p className="about__text">{aboutText}</p>
-
-            <StaggerContainer className="about__info-grid">
-              {[
-                { icon: <HiOutlineMail />, label: 'Email', value: personalInfo.email },
-                { icon: <HiOutlinePhone />, label: 'Phone', value: personalInfo.phone },
-                { icon: <HiOutlineLocationMarker />, label: 'Location', value: personalInfo.location },
-                { icon: <FaUniversity />, label: 'Institution', value: personalInfo.institution },
-              ].map((item, i) => (
-                <StaggerItem key={item.label} index={i}>
-                  <div className="about__info-card">
-                    <span className="about__info-icon">{item.icon}</span>
-                    <div>
-                      <small>{item.label}</small>
-                      <p>{item.value}</p>
-                    </div>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
           </motion.div>
         </div>
       </div>
