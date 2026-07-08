@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { personalInfo } from '../data/portfolio';
 import { StaggerContainer, StaggerItem } from '../hooks/useAnimations';
-import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker, HiOutlineDownload } from 'react-icons/hi';
+import { HiOutlineMail, HiOutlineLocationMarker, HiOutlineDownload } from 'react-icons/hi';
 import { FaGraduationCap } from 'react-icons/fa';
 
 export default function Contact() {
@@ -34,7 +34,6 @@ export default function Contact() {
           <StaggerContainer className="contact__cards">
             {[
               { icon: <HiOutlineMail />, label: 'Email', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
-              { icon: <HiOutlinePhone />, label: 'Phone', value: personalInfo.phone, href: `tel:${personalInfo.phone.replace(/\s/g, '')}` },
               { icon: <HiOutlineLocationMarker />, label: 'Location', value: personalInfo.location },
               { icon: <FaGraduationCap />, label: 'Institution', value: personalInfo.institution },
             ].map((item, i) => (
@@ -86,7 +85,6 @@ export function Footer() {
         </div>
         <div className="footer__links">
           <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a>
-          <span>{personalInfo.phone}</span>
         </div>
         <p className="footer__copy">
           &copy; {year} Maria Anayat. Crafted with dedication to inclusive education.
