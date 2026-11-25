@@ -1,105 +1,71 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { HiMenu, HiX } from 'react-icons/hi';
-import { navLinks } from '../data/portfolio';
+import { useEffect, useState } from 'react';
+import { HiBars3, HiXMark } from 'react-icons/hi2';
+import { navLinks, profile } from '../data/portfolio';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
-    const sections = navLinks.map((l) => document.getElementById(l.id));
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
-      },
-      { threshold: 0.3 }
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: '-45% 0px -50% 0px' }
     );
-    sections.forEach((s) => s && observer.observe(s));
+    navLinks.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
     return () => observer.disconnect();
   }, []);
 
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    setMobileOpen(false);
-  };
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+  }, [open]);
 
   return (
-    <motion.nav
-      className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="navbar__inner container">
-        <button className="navbar__logo" onClick={() => scrollTo('home')}>
-          <span className="navbar__logo-mark">M</span>
-          <span className="navbar__logo-text">Maria Anayat</span>
-        </button>
+    <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
+      <div className="container nav__inner">
+        <a href="#top" className="nav__brand" onClick={() => setOpen(false)}>
+          <span className="nav__mark" aria-hidden="true">MA</span>
+          <span className="nav__name">
+            {profile.name}
+            <small>Speech &amp; Language Therapist</small>
+          </span>
+        </a>
 
-        <ul className="navbar__links">
-          {navLinks.map((link) => (
-            <li key={link.id}>
-              <button
-                className={`navbar__link ${activeSection === link.id ? 'active' : ''}`}
-                onClick={() => scrollTo(link.id)}
-              >
-                {link.label}
-                {activeSection === link.id && (
-                  <motion.span
-                    className="navbar__link-indicator"
-                    layoutId="navIndicator"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </button>
-            </li>
+        <nav className={`nav__links ${open ? 'is-open' : ''}`} aria-label="Main">
+          {navLinks.map(({ id, label }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className={active === id ? 'is-active' : ''}
+              onClick={() => setOpen(false)}
+            >
+              {label}
+            </a>
           ))}
-        </ul>
+          <a className="btn btn--accent nav__cta" href={profile.consultationUrl} target="_blank" rel="noreferrer">
+            Request a consultation
+          </a>
+        </nav>
 
         <button
-          className="navbar__toggle"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={mobileOpen}
+          className="nav__toggle"
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
         >
-          {mobileOpen ? <HiX /> : <HiMenu />}
+          {open ? <HiXMark /> : <HiBars3 />}
         </button>
       </div>
-
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            className="navbar__mobile"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {navLinks.map((link, i) => (
-              <motion.button
-                key={link.id}
-                className="navbar__mobile-link"
-                onClick={() => scrollTo(link.id)}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.05 }}
-              >
-                {link.label}
-              </motion.button>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+    </header>
   );
 }

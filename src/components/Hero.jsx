@@ -1,111 +1,61 @@
-import { motion } from 'framer-motion';
-import { personalInfo } from '../data/portfolio';
-import { HiOutlineDownload, HiOutlineMail } from 'react-icons/hi';
-import { FaHands } from 'react-icons/fa';
+import { HiArrowRight, HiOutlineEnvelope, HiCheckBadge } from 'react-icons/hi2';
+import { highlights, profile } from '../data/portfolio';
 
 export default function Hero() {
-  const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-
   return (
-    <section id="home" className="hero">
-      <div className="hero__gradient" />
-      <div className="hero__rings">
-        <div className="hero__ring hero__ring--1" />
-        <div className="hero__ring hero__ring--2" />
-        <div className="hero__ring hero__ring--3" />
-      </div>
+    <section id="top" className="hero">
+      <div className="container hero__grid">
+        <div className="hero__text">
+          <span className="eyebrow">{profile.subRole}</span>
+          <h1 className="hero__name">{profile.name}</h1>
+          <p className="hero__role">{profile.role}</p>
+          <p className="hero__intro">{profile.intro}</p>
 
-      <div className="hero__content container">
-        <motion.div
-          className="hero__text"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <motion.div
-            className="hero__badge"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <FaHands />
-            <span>Special Education & Hearing Impairment</span>
-          </motion.div>
-
-          <motion.p className="hero__greeting" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-            Hello, I'm
-          </motion.p>
-
-          <motion.h1
-            className="hero__name"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          >
-            Maria <span className="text-gradient">Anayat</span>
-          </motion.h1>
-
-          <motion.p
-            className="hero__designation"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-          >
-            {personalInfo.designation}
-          </motion.p>
-
-          <motion.h2
-            className="hero__title"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            {personalInfo.title}
-          </motion.h2>
-
-          <motion.p
-            className="hero__tagline"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
-            {personalInfo.tagline}
-          </motion.p>
-
-          <motion.div
-            className="hero__actions"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
-          >
-            <button className="btn btn--primary" onClick={() => scrollTo('contact')}>
-              <HiOutlineMail /> Get In Touch
-            </button>
-            <a className="btn btn--outline" href={personalInfo.cvUrl} download>
-              <HiOutlineDownload /> Download CV
+          <div className="hero__actions">
+            <a className="btn btn--accent" href={profile.consultationUrl} target="_blank" rel="noreferrer">
+              Request a consultation <HiArrowRight />
             </a>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          className="hero__image-wrapper"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="hero__image-glow" />
-          <div className="hero__image-frame">
-            <img
-              src="/images/personal/profile.jpeg?v=2"
-              alt="Maria Anayat"
-              className="hero__image"
-              width={520}
-              height={650}
-              fetchPriority="high"
-              decoding="async"
-            />
+            <a className="btn btn--outline" href="#contact">
+              <HiOutlineEnvelope /> Get in touch
+            </a>
           </div>
-        </motion.div>
+
+          <ul className="hero__stats">
+            {highlights.map((h) => (
+              <li key={h.label}>
+                <strong>{h.value}</strong>
+                <span>{h.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="hero__visual">
+          <div className="hero__backdrop" aria-hidden="true" />
+          <figure className="hero__photo">
+            <img
+              src={profile.photo}
+              alt="Maria Anayat, speech and language therapist"
+              width="515"
+              height="901"
+              fetchPriority="high"
+            />
+          </figure>
+          <div className="hero__badge hero__badge--top">
+            <HiCheckBadge />
+            <div>
+              <strong>Gazetted Officer</strong>
+              <span>Government of Punjab</span>
+            </div>
+          </div>
+          <div className="hero__badge hero__badge--bottom">
+            <span className="hero__badge-dot" />
+            <div>
+              <strong>Founder</strong>
+              <span>VoiceForUnheard</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

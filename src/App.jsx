@@ -1,33 +1,56 @@
+import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Education from './components/Education';
-import Experience from './components/Experience';
-import Certifications from './components/Certifications';
-import Research from './components/Research';
-import Gallery from './components/Gallery';
-import Contact, { Footer } from './components/Contact';
-import Preloader, { ScrollToTop } from './components/Preloader';
+import {
+  About,
+  Services,
+  Experience,
+  Education,
+  Research,
+  Founder,
+  Contact,
+  Footer,
+} from './components/Sections';
+
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll('[data-reveal]');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            observer.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+}
 
 export default function App() {
+  useReveal();
   return (
     <>
-      <Preloader />
+      <a className="skip-link" href="#about">Skip to content</a>
       <Navbar />
       <main>
         <Hero />
         <About />
-        <Skills />
-        <Education />
+        <Services />
         <Experience />
-        <Certifications />
+        <Education />
         <Research />
-        <Gallery />
+        <Founder />
         <Contact />
       </main>
       <Footer />
-      <ScrollToTop />
     </>
   );
 }

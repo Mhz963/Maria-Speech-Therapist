@@ -1,221 +1,143 @@
-export const personalInfo = {
+export const WEBSITE = 'https://voiceforunheard.vercel.app';
+
+export const profile = {
   name: 'Maria Anayat',
-  designation: 'Gazetted Officer of the Government of Pakistan',
-  title: 'Special Education Professional',
-  tagline: 'Empowering Deaf & Hard of Hearing Learners Through Research, Therapy & Inclusive Teaching',
-  email: 'binteanayat@gmail.com',
+  role: 'Speech & Language Therapist',
+  subRole: 'Special Education Teacher (Hearing Impairment)',
+  designation: 'Gazetted Officer, Government of Punjab',
   location: 'Gujrat, Punjab, Pakistan',
-  institution: 'Govt. Secondary School of Special Education for Hearing Impairment',
-  cvUrl: '/Maria_Anayat_CV.pdf',
+  email: 'binteanayat@gmail.com',
+  consultationUrl: `${WEBSITE}/consultation`,
+  photo: '/images/personal/profile.jpeg',
+  intro:
+    'I help deaf and hard of hearing children find their voice through speech, language and listening therapy, in Urdu and English, with families as partners at every step.',
 };
 
-export const aboutText = `I am an MPhil graduate in Special Education (Hearing Impairment) with a passion for transforming the lives of deaf and hard of hearing children. Currently serving as a Junior Special Education Teacher (BS-16) at a government institution for girls with hearing impairment in Gujrat, I bring together classroom expertise, clinical speech therapy experience, and cutting-edge research in AI-assisted learning.
-
-My journey spans from the lecture halls of the University of the Punjab to international conference podiums, where I have presented research on artificial intelligence-based speech therapy and working memory strategies for hearing-impaired students. As a USAID scholarship awardee, I am committed to advancing inclusive education and assistive technology that opens doors for every child.`;
-
-export const skills = [
-  { name: 'Special Education (HI)', level: 95, icon: 'education' },
-  { name: 'Sign Language', level: 92, icon: 'sign' },
-  { name: 'Speech & Language Therapy', level: 90, icon: 'speech' },
-  { name: 'Research & Data Analysis', level: 88, icon: 'research' },
-  { name: 'AI-Assisted Learning', level: 85, icon: 'ai' },
-  { name: 'Inclusive Education', level: 93, icon: 'inclusive' },
-  { name: 'Assistive Technology', level: 82, icon: 'tech' },
-  { name: 'Scientific Writing', level: 87, icon: 'writing' },
-  { name: 'Working Memory Strategies', level: 86, icon: 'memory' },
-  { name: 'Classroom Management', level: 91, icon: 'classroom' },
+export const highlights = [
+  { value: 'MPhil', label: 'Special Education (Hearing Impairment)' },
+  { value: 'PGD', label: 'Speech & Language Therapy' },
+  { value: '3', label: 'International conference presentations' },
+  { value: 'USAID', label: 'Scholarship awardee' },
 ];
 
-export const education = [
+export const about = [
+  'I teach girls with hearing impairment at the Government Secondary School of Special Education in Gujrat, where I serve as a Junior Special Education Teacher (BS-16). Before that I worked as a speech and language therapist in Lahore, assessing and treating communication difficulties in children.',
+  'I hold an MPhil in Special Education (Hearing Impairment) and a PGD in Speech and Language Therapy from the University of the Punjab. My research looks at how AI-based speech therapy can support speech development in young deaf children.',
+  'I founded VoiceForUnheard to bring the same evidence-based guidance to families and teachers across Pakistan, free and in their own language.',
+];
+
+export const services = [
   {
-    degree: 'MPhil � Special Education (Hearing Impairment)',
-    institution: 'University of the Punjab, Pakistan',
-    period: '2021 � 2023',
-    thesis: 'The Impact of Artificial Intelligence-Based Speech Therapy on Speech Development of Children with Hearing Impairment at Pre-Primary Level: An Experimental Study',
-    image: '/images/degrees/3.jpeg',
+    icon: 'speech',
+    title: 'Speech & Articulation',
+    text: 'Clear, intelligible speech through targeted sound production work, from first sounds to connected speech.',
   },
   {
-    degree: 'PGD � Speech and Language Therapy',
-    institution: 'University of the Punjab, Pakistan',
-    period: '2020 � 2021',
-    image: '/images/degrees/2.jpeg',
+    icon: 'ear',
+    title: 'Auditory Training',
+    text: 'Listening skills built step by step: detecting, discriminating and understanding speech with hearing technology.',
   },
   {
-    degree: 'M.A. � Special Education (Hearing Impairment)',
-    institution: 'University of the Punjab, Pakistan',
-    period: '2018 � 2020',
-    thesis: 'The Perception of Teachers About Working Memory of Deaf Children',
-    image: '/images/degrees/1.jpeg',
+    icon: 'language',
+    title: 'Language Development',
+    text: 'Vocabulary, sentence building and narrative skills that carry into the classroom and everyday life.',
+  },
+  {
+    icon: 'sign',
+    title: 'Sign Language & Total Communication',
+    text: 'Pakistan Sign Language alongside or instead of spoken language, following the path each family chooses.',
+  },
+  {
+    icon: 'family',
+    title: 'Parent Coaching',
+    text: 'Practical routines and home activities so parents can support progress between sessions.',
+  },
+  {
+    icon: 'school',
+    title: 'Inclusive Classroom Support',
+    text: 'Individual education plans and strategies for teachers working with deaf and hard of hearing learners.',
   },
 ];
 
 export const experience = [
   {
-    role: 'Teacher of the Deaf and Hard of Hearing',
-    organization: 'Govt. Secondary School Special Education for HI Girls, Gujrat',
-    period: 'Mar 2025 � Present',
-    type: 'Government Teaching',
-    description:
-      'Serving as Junior Special Education Teacher (BS-16), delivering specialized instruction and inclusive support for girls with hearing impairment in a government special education institution.',
-    highlights: [
-      'Individualized education plans for deaf/hard of hearing students',
-      'Sign language integrated classroom instruction',
-      'Collaborative support for inclusive learning outcomes',
-    ],
-  },
-  {
-    role: 'Sign Language Training � Government Certificate',
-    organization: "J.S.E.T (H.I) � Improving Teacher's Skills in Sign Language",
-    period: 'Jun 8 � 11, 2026',
-    type: 'Professional Training',
-    description:
-      'Completed an intensive one-week government-certified training course focused on advancing sign language proficiency for special education teachers working with hearing-impaired students.',
-    highlights: [
-      'Government certified � Certificate No. 04020106',
-      'Advanced sign language pedagogy for classroom settings',
-      'Skills enhancement for deaf education professionals',
+    role: 'Junior Special Education Teacher (BS-16)',
+    org: 'Govt. Secondary School of Special Education for HI Girls, Gujrat',
+    period: '2025 – Present',
+    points: [
+      'Teach deaf and hard of hearing girls using sign-language-integrated instruction',
+      'Plan and review individual education plans with families and colleagues',
     ],
   },
   {
     role: 'Speech and Language Therapist',
-    organization: 'My Creation Clinic, Lahore',
-    period: '2023 � 2025',
-    type: 'Clinical Practice',
-    description:
-      'Provided speech and language therapy services, assessing and treating communication disorders in children and adults with diverse needs.',
-    highlights: [
-      'Speech development intervention programs',
-      'Language assessment and therapy planning',
-      'Family-centered therapeutic approaches',
+    org: 'My Creation Clinic, Lahore',
+    period: '2023 – 2025',
+    points: [
+      'Assessed speech, language and communication needs and planned therapy',
+      'Delivered articulation, language and listening programmes with family-centred practice',
     ],
   },
   {
-    role: 'Research Assistant',
-    organization: 'Lahore � with Dr. Samina Ashraf',
-    period: '2022 � 2024',
-    type: 'Academic Research',
-    description:
-      'Contributed to experimental research in special education, supporting study design, data collection, statistical analysis, and literature review.',
-    highlights: [
-      'Experimental study design and implementation',
-      'Data analysis and research documentation',
-      'Co-authored international conference presentations',
+    role: 'Research Assistant, Special Education',
+    org: 'Lahore, with Dr. Samina Ashraf',
+    period: '2022 – 2024',
+    points: [
+      'Supported experimental study design, data collection and statistical analysis',
+      'Co-authored presentations at international special education conferences',
     ],
   },
 ];
 
-export const certifications = [
+export const education = [
   {
-    title: "Improving Teacher's Skills in Sign Language",
-    issuer: 'J.S.E.T (H.I) � Government Training',
-    date: 'Jun 2026',
-    certNo: '04020106',
-    type: 'pdf',
-    file: '/certificates/Government training.pdf',
-    image: '/images/certificates/government-training.jpeg',
-    featured: true,
+    title: 'MPhil, Special Education (Hearing Impairment)',
+    org: 'University of the Punjab',
+    period: '2021 – 2023',
+    note: 'Thesis on the impact of AI-based speech therapy on speech development of pre-primary children with hearing impairment. USAID scholarship.',
   },
   {
-    title: 'Virtual Training for Sign Language Interpreters',
-    issuer: 'Professional Sign Language Institute',
-    date: 'Jun 2020',
-    type: 'pdf',
-    file: '/certificates/VirtualTraining_MariaaAnayat.pdf',
-    image: '/images/certificates/virtual-sign-language-training.jpeg',
-    featured: true,
+    title: 'PGD, Speech and Language Therapy',
+    org: 'University of the Punjab',
+    period: '2020 – 2021',
   },
   {
-    title: '2nd International Conference on Research in Special Education',
-    issuer: 'The Islamia University of Bahawalpur',
-    date: 'Nov 2022',
-    type: 'image',
-    image: '/images/certificates/2nd-research-conference.jpeg',
-    featured: true,
-  },
-  {
-    title: 'Paper Presenter � ICORE 2022',
-    issuer: 'Institute of Education and Research, University of the Punjab',
-    date: 'Nov 2022',
-    type: 'image',
-    image: '/images/certificates/paper-presenter.jpeg',
-    featured: true,
-  },
-  {
-    title: 'Virtual Workshop on Autism',
-    issuer: 'Rex Medical Centre, Pakistan',
-    date: 'Jun 2023',
-    type: 'listed',
-  },
-  {
-    title: 'Awareness About Dietary Interventions for ADHD',
-    issuer: 'Rex Medical Centre, Pakistan',
-    date: 'Jul 2023',
-    type: 'listed',
-  },
-  {
-    title: 'Effective Office Management for Future Managers',
-    issuer: 'USAID-US',
-    date: '2023',
-    type: 'listed',
-  },
-  {
-    title: 'How to Write a Scientific Paper',
-    issuer: 'Coursera (US-Funded)',
-    date: 'Jul 2022',
-    type: 'listed',
+    title: 'MA, Special Education (Hearing Impairment)',
+    org: 'University of the Punjab',
+    period: '2018 – 2020',
+    note: 'Thesis on teachers’ perceptions of the working memory of deaf children.',
   },
 ];
 
-export const conferences = [
+export const training = [
+  { title: 'Improving Teachers’ Skills in Sign Language', org: 'J.S.E.T (H.I), government certificate', period: '2026' },
+  { title: 'Virtual Workshop on Autism', org: 'Rex Medical Centre', period: '2023' },
+  { title: 'Virtual Training for Sign Language Interpreters', org: 'Professional training', period: '2020' },
+];
+
+export const research = [
   {
     title: 'AI-Based Speech Therapy for Hearing-Impaired Children',
     event: '3rd International Conference on Research in Special Education',
-    date: 'Dec 2023',
-    coAuthors: 'Dr. Samina Ashraf',
+    year: '2023',
   },
   {
-    title: "Teachers' Knowledge and Strategies for Working Memory of Hearing-Impaired Students",
-    event: '10th International Conference on Research (ICORE 2022)',
-    date: 'Nov 2022',
-    coAuthors: 'Dr. Samina Ashraf, Dr. Munawar Malik',
+    title: 'Teachers’ Knowledge and Strategies for Working Memory of Hearing-Impaired Students',
+    event: 'ICORE 2022, University of the Punjab',
+    year: '2022',
   },
   {
     title: 'Strategies Used by Hearing-Impaired Graduates to Manage Working Memory Load',
     event: '2nd International Conference on Research in Special Education',
-    date: 'Nov 2022',
-    coAuthors: 'Dr. Samina Ashraf, Dr. Munawar Malik',
+    year: '2022',
   },
-];
-
-export const honors = [
-  {
-    title: 'USAID Scholarship Awardee',
-    description: "Two-year Master's program scholarship at University of the Punjab, Lahore",
-    period: '2021 � 2023',
-  },
-  {
-    title: 'ICORE 2022 Presenter & Award',
-    description: 'Presented at 10th International Conference on Research in Education',
-    period: 'Nov 2022',
-  },
-];
-
-export const gallery = [
-  { src: '/images/professional/1.jpeg', alt: 'Maria at University of the Punjab', caption: 'Institute of Special Education � University of the Punjab' },
-  { src: '/images/professional/2.jpeg', alt: 'ICORE 2022 Conference', caption: 'ICORE 2022 � International Conference on Research' },
-  { src: '/images/professional/3.jpeg', alt: 'Conference Presentation', caption: 'Presenting Research at ICORE 2022' },
-  { src: '/images/gallery/award-of-appreciation.jpeg', alt: 'Award of Appreciation', caption: 'Award of Appreciation � Govt. Secondary School of Special Education for HI Girls, Gujrat' },
-  { src: '/images/gallery/ceremony.jpeg', alt: 'Training Course Closing Ceremony', caption: 'Closing Ceremony � In-Service Training Course for Teachers of Disabled Children, Lahore' },
 ];
 
 export const navLinks = [
-  { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'education', label: 'Education' },
+  { id: 'services', label: 'Services' },
   { id: 'experience', label: 'Experience' },
-  { id: 'certifications', label: 'Certificates' },
+  { id: 'education', label: 'Education' },
   { id: 'research', label: 'Research' },
-  { id: 'gallery', label: 'Gallery' },
   { id: 'contact', label: 'Contact' },
 ];
